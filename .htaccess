@@ -1,3 +1,7 @@
+Options +FollowSymLinks
 RewriteEngine On
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteCond %{HTTP_HOST} ^www\.cherniaev\.com$ [NC]
+RewriteRule ^(.*)$ https://cherniaev.com/$1 [R=301,L]
+RewriteBase /
+RewriteCond %{HTTP:X-HTTPS} !1
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
